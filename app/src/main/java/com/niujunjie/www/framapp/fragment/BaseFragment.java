@@ -21,6 +21,7 @@ public abstract class BaseFragment extends Fragment{
     public Context ctx;
     private LoadingPage loadingPage;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +47,13 @@ public abstract class BaseFragment extends Fragment{
                 return initRootView(inflater,container,savedInstanceState);
             }
         };
-        initNetData();
+
+        requestNetData();
         return loadingPage;
     }
+
+
+
 
     /**
      *
@@ -56,14 +61,14 @@ public abstract class BaseFragment extends Fragment{
     protected abstract LoadingPage.LoadingPageState onLoad();
 
     /**
-     * 初始化显示界面
+     * 网络数据请求
+     */
+    protected abstract void requestNetData();
+    /**   * 初始化显示界面
      */
     public abstract View initRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
-    /**
-     * 进行网络数据的获取
-     */
-    protected abstract void initNetData();
+
     //调用此方法先触发onLoad方法，条件成立触发initRootView方法
     public void showView(){
         if(loadingPage != null){

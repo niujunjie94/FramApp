@@ -2,7 +2,6 @@ package com.niujunjie.www.framapp.base;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
@@ -34,6 +33,10 @@ public class BaseActivity extends FragmentActivity{
              to.setArguments(from.getArguments());
     }
 
+
+    /**
+     * fragment管理方法
+     */
     public void switchFragment(BaseFragment  from,BaseFragment to){
 
             transaction = getSupportFragmentManager().beginTransaction();
@@ -43,10 +46,5 @@ public class BaseActivity extends FragmentActivity{
                 transaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
             }
     }
-    /**
-     * fragment管理方法
-     */
-    public void showFragment(){
 
-    }
 }
